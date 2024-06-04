@@ -1,0 +1,234 @@
+@import url(https://fonts.googleapis.com/css2?family=Galdeano);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    --main-color-1: rgb(253, 241, 230);
+    --main-color-2: #0d7680;
+    background-color: var(--main-color-1);
+}
+
+#container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Outfit", "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333;
+}
+
+#right-side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 50%;
+    opacity: 0.2;
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--main-color-2),
+        var(--main-color-2) 20px,
+        var(--main-color-1) 20px,
+        var(--main-color-1) 100px
+    );
+}
+#left-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 50%;
+    opacity: 0.2;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--main-color-2),
+        var(--main-color-2) 20px,
+        var(--main-color-1) 20px,
+        var(--main-color-1) 100px
+    );
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 90%;
+    font-size: larger;
+    font-style: normal;
+    font-family: "Galdeano", sans-serif;
+    background-color: var(--main-color-1);
+}
+
+#title {
+    color: #9a9a9a;
+    position: relative;
+}
+
+#timeframe-button {
+    display: inline-block;
+    position: relative;
+    width: 175px;
+    height: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: sub;
+    &:after {
+        content: "";
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 6px solid #aaa;
+    }
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.05);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+    }
+    &:active {
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        transform: translateY(4px);
+    }
+}
+
+#timeframe-container {
+    position: absolute;
+    width: 100%;
+}
+
+.timeframe-option {
+    padding-right: 10px;
+}
+
+.monthly {
+    top: 0;
+}
+
+.weekly {
+    top: 50px;
+}
+
+.daily {
+    top: 100px;
+}
+
+.asterisk {
+    font-size: 20px;
+    vertical-align: super;
+}
+
+#content {
+    background-color: var(--main-color-1);
+    text-align: center;
+    vertical-align: top;
+    height: 100%;
+    width: 90%;
+}
+
+.bar {
+    fill: var(--main-color-2);
+}
+.highlight {
+    fill: orange;
+    cursor: pointer;
+}
+
+.y-axis path {
+    display: none;
+}
+
+.asterisk-note,
+.dataset-source,
+.source-code {
+    text-anchor: end;
+    font-size: 10px;
+    fill: gray;
+    font-family: sans-serif;
+    & a {
+        text-decoration: underline;
+    }
+}
+
+.asterisk-note {
+    text-anchor: start;
+}
+
+#tooltip {
+    position: absolute;
+    background-color: var(--main-color-1);
+    border-collapse: collapse;
+    overflow: hidden;
+    margin: auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    animation: float 5s infinite;
+    border-radius: 10px;
+    font-size: 13px;
+    &.hidden {
+        display: none;
+    }
+}
+
+tr {
+    border-top: 1px solid #c1c3d1;
+    border-bottom: 1px solid #c1c3d1;
+    color: #666b85;
+    font-weight: normal;
+    text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+    &:first-child {
+        border-top: none;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:nth-child(odd) td {
+        background: rgba(0, 0, 0, 0.1);
+        background-clip: padding-box; /* Or use content-box */
+    }
+}
+
+td {
+    text-align: left;
+    vertical-align: middle;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #c1c3d1;
+    padding: 5px 20px;
+    &:last-child {
+        border-right: 0px;
+    }
+
+    &.category {
+        text-align: right;
+        padding-right: 5px;
+        font-weight: bold;
+    }
+
+    &.value {
+        padding-left: 5px;
+        text-align: left;
+    }
+}
